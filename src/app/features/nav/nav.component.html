@@ -1,0 +1,13 @@
+<div class="card">
+    <p-tabs value="/dashboard">
+        <p-tablist>
+            <ng-content/>
+            @for(category of categories; track category.id){
+                <p-tab [value]="category.id" class="flex items-center !gap-2 text-inherit" (click)="getCatId(category.id)">
+                    <!--<i [class]="categories.icon"></i>-->
+                    <span class="inline-block">{{ category.title }}</span>
+                </p-tab>
+            }
+        </p-tablist>
+    </p-tabs>
+</div>

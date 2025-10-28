@@ -1,1 +1,107 @@
-<p>products-list works!</p>
+<app-nav (selectedCategory)="getProducts($event)">
+    <p-button (click)="visible = true" icon="pi pi-bars" class="ml-6" />
+</app-nav>
+
+<!--products list-->
+<div class="p-9 flex gap-5">
+    @for(product of products;track product.id)
+    {
+        <app-product-card>
+            <p-card [style]="{ width: '20rem', overflow: 'hidden' , position:'relative' }">
+                <ng-template #header>
+                    <p-tag severity="warn" value="-{{product.discountPercentage}}%" class="rate"  />
+                    <p-speeddial [model]="items" direction="left" 
+                    [radius]="80" type="semi-circle"
+                    [style]="{ position: 'absolute', right: 0, top:'1rem'}" />
+                    <img alt="Card" class="w-full product-image" [src]="product?.image" />
+                </ng-template>
+                <ng-template #title>
+                <div class="flex justify-between">
+                    <h1>{{product?.title}}</h1>
+                    <p-tag [severity]="product.status == 'Available' ? 'success':'danger'" [value]="product?.status" [rounded]="true" />
+                </div>
+                </ng-template>
+                <ng-template #subtitle>{{product?.price}}$ </ng-template>
+            </p-card>
+        </app-product-card>
+    }
+</div>
+
+<!--filter dialog-->
+<div class="card flex justify-center">
+    <p-drawer #drawerRef [(visible)]="visible" styleClass="overflow-hidden">
+        <ng-template #headless>
+            <div class="flex flex-col h-full p-7">
+                <!--price filter-->
+                <p-fieldset legend="Price">
+                    <div>
+                        <!--min price-->
+                        <div>
+                            <label class="block">min</label>
+                            <p-inputnumber [(ngModel)]="price1" [showButtons]="true" inputId="stacked" mode="currency" currency="USD" [inputSize]='15'/>
+                            <ng-template #incrementbuttonicon>
+                                <span class="pi pi-plus"></span>
+                            </ng-template>
+                        </div>
+                        <!--max price-->
+                        <div>
+                            <label class="block">max</label>
+                            <p-inputnumber [(ngModel)]="price2" [showButtons]="true" inputId="stacked" mode="currency" currency="USD" [inputSize]='15' />
+                            <ng-template #incrementbuttonicon>
+                                <span class="pi pi-plus"></span>
+                            </ng-template>
+                        </div>
+                    </div>
+                </p-fieldset>
+
+                <!--status filter-->
+                <p-fieldset legend="Status">
+                    <div class="pt-2">
+                        <p-select [options]="statuses" [(ngModel)]="selectedStatus" 
+                        optionLabel="label" optionValue="id" placeholder="Select a Status" 
+                        class="w-full" />
+                    </div>
+                </p-fieldset>
+                <!--discount filter-->
+                <p-fieldset legend="Discount">
+                    <div class="pt-2">
+                        <!--min discount-->
+                        <div>
+                            <label class="block">min</label>
+                            <p-inputnumber [(ngModel)]="discount1" [showButtons]="true" inputId="percent" prefix="%" [inputSize]='15' />
+                            <ng-template #incrementbuttonicon>
+                                <span class="pi pi-plus"></span>
+                            </ng-template>
+                        </div>
+                        <!--max discount-->
+                        <div>
+                            <label class="block">max</label>
+                            <p-inputnumber [(ngModel)]="discount2" [showButtons]="true" inputId="percent" prefix="%" [inputSize]='15' />
+                            <ng-template #incrementbuttonicon>
+                                <span class="pi pi-plus"></span>
+                            </ng-template>
+                        </div>
+                    </div>
+                </p-fieldset>
+
+                <!--rate filter-->
+                <p-fieldset legend="Rate">
+                    <div class=" pt-2">
+                        <!--min rate-->
+                        <div>
+                            <label class="block">from</label>
+                            <p-inputnumber [(ngModel)]="rate1" [showButtons]="true" [inputSize]="15" />
+                            <p-slider [(ngModel)]="rate1" class="w-full mt-4" max=10 />
+                        </div>
+                        <!--max rate-->
+                        <div class="mt-5">
+                            <label class="block">to</label>
+                            <p-inputnumber [(ngModel)]="rate2" [showButtons]="true" [inputSize]="15"/>
+                            <p-slider [(ngModel)]="rate2" class="w-full mt-4" max=10 />
+                        </div>
+                    </div>
+                </p-fieldset>
+            </div>
+        </ng-template>
+    </p-drawer>
+</div>

@@ -1,0 +1,42 @@
+.logo4
+{
+    width: 5rem;
+}
+.logo-text
+{
+    font-size: 2.5rem;
+    margin-left: -1rem;
+}
+::ng-deep .p-button
+{
+    background-color: transparent !important;
+    border: none !important;
+    color: white !important;
+    font-size: 2rem !important;
+}
+.p-toolbar
+{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+.p-toolbar-end
+{
+    margin-right: 1rem !important;
+}
+.p-togglebutton
+{
+    background-color: transparent !important;
+    border: none !important;
+}
+::ng-deep .p-togglebutton	
+{
+    background-color: red !important;
+}
+.card
+{
+    margin-left: -2rem;
+}
+::ng-deep .p-badge	
+{
+    background-color: #099396 !important;
+}

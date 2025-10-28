@@ -1,1 +1,54 @@
-<p>header works!</p>
+<p-toolbar [style]="{border:'none'}" styleClass="bg-red-500">
+    <!--logo section-->  
+    <ng-template #start>
+        <div class="flex items-center">
+            <div class=logo4>
+                <img src="assets/icons/logo4.png" class="img-fluid">
+            </div>
+            <h1 class="text-white-600 font-extrabold logo-text">S<span class="text-teal-600">E</span>LL</h1>
+        </div>
+    </ng-template>
+
+    <!--search section-->  
+    <ng-template #center>
+        <p-autocomplete [(ngModel)]="selectedItem" 
+        [virtualScroll]="false" [suggestions]="filteredItems" 
+        [virtualScrollItemSize]="34" (completeMethod)="filterItems($event)"
+        emptyMessage="no matched result" placeholder="search with product name"
+        optionLabel="title" [dropdown]="true" />
+    </ng-template>
+
+    <!--options section-->  
+    <ng-template #end>
+        <div class="flex gap-7">
+            <!--user info-->
+            <div class="flex items-center gap-2">
+                <p-menu #userMenu [model]="userItems" [popup]="true" />
+                <p-button (click)="userMenu.toggle($event)" icon="pi pi-user"/>
+            </div>
+
+            <!--cart-->
+            <div class="flex items-center gap-2">
+                <p-overlaybadge value="2">
+                    <a href="#">
+                        <i class="pi pi-shopping-cart" style="font-size: 1.5rem"></i>
+                    </a>
+                </p-overlaybadge>
+            </div>
+
+            <!--language-->
+            <div class="flex items-center gap-2">
+                <p-menu #menu [model]="languageItems" [popup]="true" />
+                <p-button (click)="menu.toggle($event)" icon="pi pi-language"/>
+            </div>
+
+            <!--mode-->
+            <div class="card flex justify-center">
+                <p-togglebutton [(ngModel)]="checked" onLabel="" offLabel=""
+                 onIcon="pi pi-sun" offIcon="pi pi-moon"
+                 class="w-24" ariaLabel="Do you confirm" />
+            </div>
+        </div>
+ 
+    </ng-template>
+</p-toolbar>
