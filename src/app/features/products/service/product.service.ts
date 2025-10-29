@@ -25,4 +25,15 @@ export class ProductService {
     );
   }
 
+  //fetch product by id
+  getProductById(pId: string): Observable<IProduct> {
+    return this.http.get<IProduct>(`${this.url}/products/${pId}`).pipe(
+      map(product => {
+        product.image = `${this.url}${product.image}`;
+        return product;
+      })
+    );
+  }
+
+
 }

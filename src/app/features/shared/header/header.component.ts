@@ -1,15 +1,7 @@
 import { ProductService } from './../../products/service/product.service';
 import { Component, inject, OnInit } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
-import { ToolbarModule } from 'primeng/toolbar';
-import { InputTextModule } from 'primeng/inputtext';
-import { MenuModule } from 'primeng/menu';
 import { MenuItem } from 'primeng/api';
-import { BadgeModule } from 'primeng/badge';
-import { OverlayBadgeModule } from 'primeng/overlaybadge';
-import { ToggleButton } from 'primeng/togglebutton';
-import { FormsModule } from '@angular/forms';
-import { AutoCompleteModule } from 'primeng/autocomplete';
+
 
 interface AutoCompleteCompleteEvent {
     originalEvent: Event;
@@ -18,19 +10,9 @@ interface AutoCompleteCompleteEvent {
 
 @Component({
   selector: 'app-header',
-  imports: [
-    ButtonModule,
-    ToolbarModule,
-    InputTextModule,
-    MenuModule,
-    BadgeModule,
-    OverlayBadgeModule,
-    ToggleButton,
-    FormsModule,
-    AutoCompleteModule
-    ],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
+  standalone:false
 })
 export class HeaderComponent implements OnInit {
     userItems: MenuItem[] | undefined;

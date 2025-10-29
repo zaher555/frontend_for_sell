@@ -10,7 +10,7 @@
             <p-card [style]="{ width: '20rem', overflow: 'hidden' , position:'relative' }">
                 <ng-template #header>
                     <p-tag severity="warn" value="-{{product.discountPercentage}}%" class="rate"  />
-                    <p-speeddial [model]="items" direction="left" 
+                    <p-speeddial [model]="items" direction="left" (click)="getProductId(product.id)"
                     [radius]="80" type="semi-circle"
                     [style]="{ position: 'absolute', right: 0, top:'1rem'}" />
                     <img alt="Card" class="w-full product-image" [src]="product?.image" />
