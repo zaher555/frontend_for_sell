@@ -1,58 +1,30 @@
-<!--
-<div class="card">
-    <p-dataview #dv [value]="product">
-                    <div
-                        class="flex flex-col sm:flex-row sm:items-center p-6 gap-4"
-                        [ngClass]="{ 'border-t border-surface-200 dark:border-surface-700': '' }"
-                    >
-                        <div class="md:w-40 relative">
-                            <img
-                                class="block xl:block mx-auto rounded-border w-full"
-                                [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image"
-                                [alt]="product.title"
-                            />
-                            <p-tag
-                                [value]="product.status"
-                                [severity]="getSeverity(product)"
-                                class="absolute dark:!bg-surface-900"
-                                [style.left.px]="4"
-                                [style.top.px]="4"
-                            />
-                        </div>
-                        <div class="flex flex-col md:flex-row justify-between md:items-center flex-1 gap-6">
-                            <div class="flex flex-row md:flex-col justify-between items-start gap-2">
-                                <div>
-                                    <span class="font-medium text-secondary text-sm">{{ product.category }}</span>
-                                    <div class="text-lg font-medium text-surface-900 dark:text-surface-0 mt-2">{{ product.title }}</div>
-                                </div>
-                                <div class="bg-surface-100 dark:bg-surface-700 p-1" style="border-radius: 30px">
-                                    <div
-                                        class="bg-surface-0 dark:bg-surface-900 flex items-center gap-2 justify-center py-1 px-2"
-                                        style="border-radius: 30px; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.06)"
-                                    >
-                                        <span class="text-surface-900 dark:text-surface-0 font-medium text-sm">{{
-                                            ''
-                                        }}</span>
-                                        <i class="pi pi-star-fill text-yellow-500"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col md:items-end gap-8">
-                                <span class="text-xl font-semibold text-surface-900 dark:text-surface-0">{{product.price}}</span>
-                                <div class="flex flex-row-reverse md:flex-row gap-2">
-                                    <p-button icon="pi pi-heart" [outlined]="true" />
-                                    <p-button
-                                        icon="pi pi-shopping-cart"
-                                        class="flex-auto md:flex-initial whitespace-nowrap"
-                                        label="Buy Now"
-                                        [disabled]="product.status === 'OUTOFSTOCK'"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-    </p-dataview>
+<div class="p-7 mt-7 flex gap-4">
+    <!--image section-->
+    <div class="image">
+        <img [src]="product?.image" class="product-image">
+    </div>
+
+    <!--product info-->
+    <div class="product-info w-3/4">
+        <h1 class="-mt-5">{{product?.title}}</h1>
+        <p class="flex gap-8 items-center pb-8">
+            <span>$ {{product?.price}}</span>
+            <span class="flex items-start">
+                <p-tag severity="warn" value="-{{product?.discountPercentage}}%" class="rate"  />
+            </span>
+        </p>
+        <p-rating [(ngModel)]="rateValue" [stars]="10" readonly/>
+        <p class="pb-8 pt-8">
+            {{product?.description}}
+        </p>
+        <p-tag [severity]="product?.status == 'Available' ? 'success':'danger'" [value]="product?.status" [rounded]="true"  />
+        <p class="pt-4">Available colors</p>
+        <ul class="flex gap-6 pb-8">
+            @for(color of product?.color; track color.id)
+            {
+                <li>{{color?.colorName}}</li>
+            }
+        </ul>
+        <p-button label="Add to chart" icon="pi pi-cart-plus" class="w-full"/>
+    </div>
 </div>
-
-
--->

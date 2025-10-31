@@ -12,7 +12,7 @@ import { IProduct } from '../models/iproduct';
 export class ProductComponent implements OnInit {
     productId!:string
     product!:IProduct
-
+    rateValue:number=2.2
     //services
     activateRoute$=inject(ActivatedRoute)
     productService$=inject(ProductService)

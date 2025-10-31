@@ -1,0 +1,37 @@
+h1
+{
+    font-size: 4rem;
+    font-weight: bolder;
+}
+p{
+    font-size: 2rem;
+}
+::ng-deep .product-info .p-button
+{
+    background-color: #007475 !important;
+    width: 20em;
+}
+::ng-deep .product-info .p-button-icon
+{
+    font-size: 3rem;
+}
+.image
+{
+    width: 30%;
+}
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      
+  display: block;
+}
+::ng-deep .p-rating-on-icon,
+::ng-deep .p-rating-off-icon	
+{
+    color: #FFC107 !important;
+}
+::ng-deep .p-tag	
+{
+    font-size: 1.5rem !important;
+    padding: .1rem 2rem;
+}

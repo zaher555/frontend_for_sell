@@ -21,6 +21,8 @@ import { TabsModule } from "primeng/tabs";
 import { TagModule } from "primeng/tag";
 import { DataViewModule } from 'primeng/dataview';
 import { ToastModule } from 'primeng/toast';
+import { RatingModule } from 'primeng/rating';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
     declarations:[HeaderComponent,FooterComponent],
@@ -47,7 +49,9 @@ import { ToastModule } from 'primeng/toast';
         SliderModule,
         FieldsetModule,
         TabsModule,
-        DataViewModule
+        DataViewModule,
+        RatingModule,
+        FileUploadModule
     ],
     exports:[
         HeaderComponent,
@@ -72,7 +76,9 @@ import { ToastModule } from 'primeng/toast';
         SliderModule,
         FieldsetModule,
         TabsModule,
-        DataViewModule
+        DataViewModule,
+        RatingModule,
+        FileUploadModule
     ]
 })
 export class SharedModule{

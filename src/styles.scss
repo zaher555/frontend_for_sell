@@ -1,3 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 @import "primeicons/primeicons.css";
+input
+{
+    border: 1px solid #444;
+    border-radius: 5px;
+}

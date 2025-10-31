@@ -1,0 +1,29 @@
+.logo4
+{
+    width: 5rem;
+}
+.logo-text
+{
+    font-size: 2.5rem;
+    margin-left: -1rem;
+}
+::ng-deep .p-fileupload-choose-button	
+{
+    font-size: 1.2rem !important;
+}
+::ng-deep .submit-btn .p-button
+{
+    background-color: #009689 !important;
+    width: 100%;
+    font-size: 1.5rem !important;
+
+}   
+::ng-deep .cancel-btn .p-button
+{
+    border: 1px solid #009689 !important;
+    width: 100%;
+    font-size: 1.5rem !important;
+}   
+hr{
+    color:  #444;
+}

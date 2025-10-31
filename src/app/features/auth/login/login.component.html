@@ -1,0 +1,35 @@
+<div class="mt-8 flex justify-center">
+    <form action="" metod="post" class="bg-zinc-900 w-1/4 border-1 border-teal-600 rounded p-8 overflow-hidden">
+        <div class="flex items-center justify-center pb-8">
+            <div class=logo4>
+                <img src="assets/icons/logo4.png" class="img-fluid">
+            </div>
+            <h1 class="text-white-600 font-extrabold logo-text">S<span class="text-teal-600">E</span>LL</h1>
+        </div>
+
+        <div class="flex flex-col gap-2 pb-6">
+            <label for="email">Email</label>
+            <input pInputText type="email" id="email" aria-describedby="email-help" class="p-2" placeholder="Enter your email"/>
+        </div>
+
+        <div class="flex flex-col gap-2 pb-6">
+            <label for="email">password</label>
+            <input pInputText type="password" id="password" aria-describedby="password-help" class="p-2" placeholder="Enter your password"/>
+        </div>
+
+        <div class="flex gap-3 pb-2">
+            <div class="submit-btn w-1/2">
+                <p-button label="login"/>
+            </div>
+            <div class="cancel-btn w-1/2">
+                <p-button label="cancel"/>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="text-center pt-2">
+            <a class="text-teal-600" [routerLink]="['/auth/register']">I don't have account</a>
+        </div>
+    </form>
+</div>
