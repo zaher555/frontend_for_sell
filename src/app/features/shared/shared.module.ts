@@ -23,6 +23,8 @@ import { DataViewModule } from 'primeng/dataview';
 import { ToastModule } from 'primeng/toast';
 import { RatingModule } from 'primeng/rating';
 import { FileUploadModule } from 'primeng/fileupload';
+import { TableModule } from 'primeng/table';
+import { RouterLink } from "@angular/router";
 
 @NgModule({
     declarations:[HeaderComponent,FooterComponent],
@@ -51,7 +53,9 @@ import { FileUploadModule } from 'primeng/fileupload';
         TabsModule,
         DataViewModule,
         RatingModule,
-        FileUploadModule
+        FileUploadModule,
+        TableModule,
+        RouterLink
     ],
     exports:[
         HeaderComponent,
@@ -78,7 +82,8 @@ import { FileUploadModule } from 'primeng/fileupload';
         TabsModule,
         DataViewModule,
         RatingModule,
-        FileUploadModule
+        FileUploadModule,
+        TableModule
     ]
 })
 export class SharedModule{

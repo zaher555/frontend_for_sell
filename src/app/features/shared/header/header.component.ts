@@ -47,15 +47,19 @@ export class HeaderComponent implements OnInit {
                 items: [
                     {
                         label: 'Profile',
-                        icon: 'pi pi-user'
+                        icon: 'pi pi-user',
+                        routerLink:"/profile"
+
                     },
                     {
                         label: 'Sign Up',
-                        icon: 'pi pi-user-plus'
+                        icon: 'pi pi-user-plus',
+                        routerLink:"/auth/register"
                     },
                     {
                         label: 'Login',
-                        icon: 'pi pi-sign-in'
+                        icon: 'pi pi-sign-in',
+                        routerLink:"/auth/login"
                     },
                     {
                         label: 'Logout',

@@ -1,61 +1,177 @@
-<div class="mt-8 flex justify-center">
-    <form action="" metod="post" class="bg-zinc-900 w-1/4 border-1 border-teal-600 rounded p-8 overflow-hidden">
-        <div class="flex items-center justify-center pb-8">
-            <div class=logo4>
-                <img src="assets/icons/logo4.png" class="img-fluid">
+<app-customer-form>
+    <div class="mt-8 flex justify-center">
+        <form action="" metod="post" class="bg-zinc-900 w-1/4 border-1 border-teal-600 rounded p-8 overflow-hidden" 
+        [formGroup]="registerForm" (submit)="signup()">
+            <div class="flex items-center justify-center pb-8">
+                <div class=logo4>
+                    <img src="assets/icons/logo4.png" class="img-fluid">
+                </div>
+                <h1 class="text-white-600 font-extrabold logo-text">S<span class="text-teal-600">E</span>LL</h1>
             </div>
-            <h1 class="text-white-600 font-extrabold logo-text">S<span class="text-teal-600">E</span>LL</h1>
-        </div>
 
-        <div class="flex flex-col gap-2 pb-6">
-            <label for="firstName">first name</label>
-            <input pInputText id="firstName" aria-describedby="firstName-help" class="p-2" placeholder="Enter your first name"/>
-        </div>
-
-        <div class="flex flex-col gap-2 pb-6">
-            <label for="lastName">last name</label>
-            <input pInputText id="lastName" aria-describedby="lastName-help" class="p-2" placeholder="Enter your last name"/>
-        </div>
-
-        <div class="flex flex-col gap-2 pb-6">
-            <label for="userName">username</label>
-            <input pInputText id="userName" aria-describedby="username-help" class="p-2" placeholder="Enter your username"/>
-        </div>
-
-        <div class="flex flex-col gap-2 pb-6">
-            <label for="email">Email</label>
-            <input pInputText type="email" id="email" aria-describedby="email-help" class="p-2" placeholder="Enter your email"/>
-        </div>
-
-        <div class="flex flex-col gap-2 pb-6">
-            <label for="email">password</label>
-            <input pInputText type="password" id="password" aria-describedby="password-help" class="p-2" placeholder="Enter your password"/>
-        </div>
-
-        <div class="flex flex-col gap-2 pb-6">
-            <label for="phone">phone</label>
-            <input pInputText type="text" id="phone" aria-describedby="phone-help" class="p-2" placeholder="(01) xxxx xxxxx" />
-        </div>
-
-        <div class="card">
-            <p-toast />
-            <p-fileupload mode="basic" name="demo[]" chooseIcon="pi pi-upload" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" 
-            maxFileSize="1000000" (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="drag profile image" />
-        </div>
-
-        <div class="flex gap-3 pb-2">
-            <div class="submit-btn w-1/2">
-                <p-button label="save"/>
+            <!-- first name -->
+            <div class="flex flex-col gap-2 pb-6">
+                <label for="firstName">first name</label>
+                <input pInputText id="firstName" aria-describedby="firstName-help" class="p-2" placeholder="Enter your first name" name="firstName" formControlName="firstName"/>
+                <!-- errors  -->
+                @if(registerForm.get('firstName')?.touched && registerForm.get('firstName')?.errors)
+                {
+                    <!--required-->
+                    <small [hidden]="!registerForm?.get('firstName')?.hasError('required')" class="text-red-500">
+                        * {{required}}
+                    </small>
+                    <!--min length-->
+                    <small [hidden]="!registerForm?.get('firstName')?.hasError('minlength')" class="text-red-500">
+                        * First name must contain at least 3 letters
+                    </small>
+                    <!--max length-->
+                    <small [hidden]="!registerForm?.get('firstName')?.hasError('maxlength')" class="text-red-500">
+                        * First name must not exceed 10 letters
+                    </small>
+                    <!--pattern-->
+                    <small [hidden]="!registerForm?.get('firstName')?.hasError('pattern')" class="text-red-500">
+                        * First name must contain letters only
+                    </small>
+                }
             </div>
-            <div class="cancel-btn w-1/2">
-                <p-button label="cancel"/>
+
+            <!-- last name -->
+            <div class="flex flex-col gap-2 pb-6">
+                <label for="lastName">last name</label>
+                <input pInputText id="lastName" aria-describedby="lastName-help" class="p-2" placeholder="Enter your last name" name="lastName" formControlName="lastName"/>
+                <!-- errors  -->
+                @if(registerForm.get('lastName')?.touched && registerForm.get('lastName')?.errors)
+                {
+                    <!--required-->
+                    <small [hidden]="!registerForm?.get('lastName')?.hasError('required')" class="text-red-500">
+                        * {{required}}
+                    </small>
+                    <!--min length-->
+                    <small [hidden]="!registerForm?.get('lastName')?.hasError('minlength')" class="text-red-500">
+                        * Last name must contain at least 3 letters
+                    </small>
+                    <!--max length-->
+                    <small [hidden]="!registerForm?.get('lastName')?.hasError('maxlength')" class="text-red-500">
+                        * Last name must not exceed 10 letters
+                    </small>
+                    <!--pattern-->
+                    <small [hidden]="!registerForm?.get('lastName')?.hasError('pattern')" class="text-red-500">
+                        * Last name must contain letters only
+                    </small>
+                }
             </div>
-        </div>
 
-        <hr>
+            <!-- user name -->
+            <div class="flex flex-col gap-2 pb-6">
+                <label for="customername">username</label>
+                <input pInputText id="customername" aria-describedby="customername-help" class="p-2" placeholder="Enter your username" name="customername" formControlName="customername"/>
+                <!-- errors  -->
+                @if(registerForm.get('customername')?.touched && registerForm.get('customername')?.errors)
+                {
+                    <!--required-->
+                    <small [hidden]="!registerForm?.get('customername')?.hasError('required')" class="text-red-500">
+                        * {{required}}
+                    </small>
+                    <!--min length-->
+                    <small [hidden]="!registerForm?.get('customername')?.hasError('minlength')" class="text-red-500">
+                        * User name must contain at least 3 letters
+                    </small>
+                    <!--max length-->
+                    <small [hidden]="!registerForm?.get('customername')?.hasError('maxlength')" class="text-red-500">
+                        * User name must not exceed 10 letters
+                    </small>
+                    <!--pattern-->
+                    <small [hidden]="!registerForm?.get('customername')?.hasError('pattern')" class="text-red-500">
+                        * User name must start with letter and contain numbers,symbols
+                    </small>
+                }
+            </div>
 
-        <div class="text-center pt-2">
-            <a class="text-teal-600" [routerLink]="['/auth/login']">Already have account</a>
-        </div>
-    </form>
-</div>
+            <!-- email -->
+            <div class="flex flex-col gap-2 pb-6">
+                <label for="Email">Email</label>
+                <input pInputText type="email" id="Email" aria-describedby="Email-help" class="p-2" placeholder="Enter your email" name="Email" formControlName="Email"/>
+                <!-- errors  -->
+                @if(registerForm.get('Email')?.touched && registerForm.get('Email')?.errors)
+                {
+                    <!--required-->
+                    <small [hidden]="!registerForm?.get('Email')?.hasError('required')" class="text-red-500">
+                        * {{required}}
+                    </small>
+                    <!--pattern-->
+                    <small [hidden]="!registerForm?.get('Email')?.hasError('email')" class="text-red-500">
+                        * Invalid email
+                    </small>
+                }
+            </div>
+
+            <!-- password -->
+            <div class="flex flex-col gap-2 pb-6">
+                <label for="email">password</label>
+                <input pInputText type="password" id="password" aria-describedby="password-help" class="p-2" placeholder="Enter your password" name="password" formControlName="password"/>
+                <!-- errors  -->
+                @if(registerForm.get('Email')?.touched && registerForm.get('Email')?.errors)
+                {
+                    <!--required-->
+                    <small [hidden]="!registerForm?.get('password')?.hasError('required')" class="text-red-500">
+                        * {{required}}
+                    </small>
+                    <!--min length-->
+                    <small [hidden]="!registerForm?.get('password')?.hasError('minlength')" class="text-red-500">
+                        * Password must contain at least 8 charcters
+                    </small>
+                    <!--pattern-->
+                    <small [hidden]="!registerForm?.get('password')?.hasError('pattern')" class="text-red-500">
+                        * Password must start with letters and contain number and symbols
+                    </small>
+                }
+            </div>
+
+            <!-- phone -->
+            <div class="flex flex-col gap-2 pb-6">
+                <label for="phone">phone</label>
+                <input pInputText type="text" id="phone" aria-describedby="phone-help" class="p-2" placeholder="(01) xxxx xxxxx" name="phone" formControlName="phone"/>
+                <!-- errors  -->
+                @if(registerForm.get('phone')?.touched && registerForm.get('phone')?.errors)
+                {
+                    <!--required-->
+                    <small [hidden]="!registerForm?.get('phone')?.hasError('required')" class="text-red-500">
+                        * {{required}}
+                    </small>
+                    <!--max length-->
+                    <small [hidden]="!registerForm?.get('phone')?.hasError('maxlength')" class="text-red-500">
+                        * Phone must not exceed 11 numbers
+                    </small>
+                    <!--pattern-->
+                    <small [hidden]="!registerForm?.get('phone')?.hasError('pattern')" class="text-red-500">
+                        * Phone number must start with (010) or (012) or (015) then 8 numbers
+                    </small>
+                }
+            </div>
+
+            <!-- image -->
+           <!--<div class="card">
+                <p-toast />
+                <input type="file" formControlName="image" name="image">
+            </div>-->
+
+            <div class="flex gap-3 pb-2">
+                <!--sign up-->
+                <div class="submit-btn w-1/2">
+                    <p-button label="save" type="submit" [disabled]="!registerForm.valid"/>
+                </div>
+
+                <!--cancel process-->
+                <div class="cancel-btn w-1/2">
+                    <p-button label="cancel" (click)="cancel()"/>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="text-center pt-2">
+                <a class="text-teal-600" [routerLink]="['/auth/login']">Already have account</a>
+            </div>
+        </form>
+    </div>
+</app-customer-form>
