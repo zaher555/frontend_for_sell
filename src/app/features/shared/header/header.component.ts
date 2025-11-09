@@ -18,7 +18,8 @@ export class HeaderComponent implements OnInit {
     userItems: MenuItem[] | undefined;
     languageItems: MenuItem[] | undefined;
     checked: boolean = false;
-
+    token=localStorage.getItem('token')
+    user=JSON.parse(localStorage.getItem('user') as string)
     //search
     selectedItem: any;
     filteredItems!: any[];
@@ -41,33 +42,51 @@ export class HeaderComponent implements OnInit {
         }
 
         // user options
-        this.userItems = [
-            {
-                label: 'Options',
-                items: [
-                    {
-                        label: 'Profile',
-                        icon: 'pi pi-user',
-                        routerLink:"/profile"
 
-                    },
-                    {
-                        label: 'Sign Up',
-                        icon: 'pi pi-user-plus',
-                        routerLink:"/auth/register"
-                    },
-                    {
-                        label: 'Login',
-                        icon: 'pi pi-sign-in',
-                        routerLink:"/auth/login"
-                    },
-                    {
-                        label: 'Logout',
-                        icon: 'pi pi-sign-out'
-                    }
-                ]
-            }
-        ];
+        if(this.token){
+            this.userItems = [
+                {
+                    label: 'Options',
+                    items: [
+                        {
+                            label: 'Profile',
+                            icon: 'pi pi-user',
+                            routerLink:"/profile"
+                        },
+                        {
+                            label: 'Logout',
+                            icon: 'pi pi-sign-out'
+                        }
+                    ]
+                }
+            ];
+        }
+        else{
+            this.userItems = [
+                {
+                    label: 'Options',
+                    items: [
+                        {
+                            label: 'Profile',
+                            icon: 'pi pi-user',
+                            routerLink:"/profile"
+    
+                        },
+                        {
+                            label: localStorage.getItem('user')?JSON.parse(localStorage.getItem('user') as string)?.username:'Sign Up',
+                            icon: 'pi pi-user-plus',
+                            routerLink:"/auth/register"
+                        },
+                        {
+                            label: 'Login',
+                            icon: 'pi pi-sign-in',
+                            routerLink:"/auth/login"
+                        },
+                    ]
+                }
+            ];
+        }
+
 
         // language options
         this.languageItems = [

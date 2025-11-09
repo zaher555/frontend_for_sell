@@ -4,11 +4,10 @@
         [formGroup]="customerUpdateForm" (submit)="save()">
             <div class="card pb-8">
                 <p-toast />
-                <p-fileupload mode="basic" name="demo[]" chooseIcon="pi pi-upload" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" 
-                maxFileSize="1000000" (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="drag profile image" name="profileImage" formControlName="profileImage"/>
+                <img src="assets/avatar.png" class="rounded-full w-20 h-20" alt="avatar">
             </div>
 
-            <div class="flex flex-col gap-2 pb-6">
+            <!-- <div class="flex flex-col gap-2 pb-6">
                 <label for="firstName">first name</label>
                 <input pInputText id="firstName" aria-describedby="firstName-help" class="p-2" placeholder="Enter your first name" name="firstName" formControlName="firstName"/>
             </div>
@@ -16,27 +15,27 @@
             <div class="flex flex-col gap-2 pb-6">
                 <label for="lastName">last name</label>
                 <input pInputText id="lastName" aria-describedby="lastName-help" class="p-2" placeholder="Enter your last name" name="lastName" formControlName="lastName"/>
-            </div>
+            </div> -->
 
             <div class="flex flex-col gap-2 pb-6">
                 <label for="userName">username</label>
                 <input pInputText id="userName" aria-describedby="username-help" class="p-2" placeholder="Enter your username" name="username" formControlName="username"/>
             </div>
 
-            <div class="flex flex-col gap-2 pb-6">
+            <!-- <div class="flex flex-col gap-2 pb-6">
                 <label for="email">Email</label>
                 <input pInputText type="email" id="email" aria-describedby="email-help" class="p-2" placeholder="Enter your email" name="email" formControlName="email"/>
-            </div>
+            </div> -->
 
-            <div class="flex flex-col gap-2 pb-6">
+            <!-- <div class="flex flex-col gap-2 pb-6">
                 <label for="email">password</label>
                 <input pInputText type="password" id="password" aria-describedby="password-help" class="p-2" placeholder="Enter your password" name="password" formControlName="password"/>
-            </div>
+            </div> -->
 
-            <div class="flex flex-col gap-2 pb-6">
+            <!-- <div class="flex flex-col gap-2 pb-6">
                 <label for="phone">phone</label>
                 <input pInputText type="text" id="phone" aria-describedby="phone-help" class="p-2" placeholder="(01) xxxx xxxxx" name="phone" formControlName="phone"/>
-            </div>
+            </div> -->
 
             <div class="flex gap-3 pb-2">
                 <div class="submit-btn w-1/2">

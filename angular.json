@@ -17,11 +17,17 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+              "allowedCommonJsDependencies": [
+              "crypto-browserify",
+              "stream-browserify",
+              "buffer"
+            ],
             "outputPath": "dist/for_sell",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "src/polyfills.ts"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",

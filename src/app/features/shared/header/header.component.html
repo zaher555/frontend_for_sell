@@ -24,7 +24,19 @@
             <!--user info-->
             <div class="flex items-center gap-2">
                 <p-menu #userMenu [model]="userItems" [popup]="true" />
-                <p-button (click)="userMenu.toggle($event)" icon="pi pi-user"/>
+
+                <div pButton 
+                class="flex items-center gap-2 p-button-text" 
+                (click)="userMenu.toggle($event)">
+                    @if(token){
+                        <img src="assets/avatar.png" class="rounded-full w-10 h-10" alt="avatar">
+                        <span class="text-white text-lg">{{ user?.username }}</span>
+                    }@else{
+                        <i class="pi pi-user text-white"></i>
+                        <span class="text-white text-lg">Sign Up</span>
+                    }
+               </div>
+           
             </div>
 
             <!--cart-->
@@ -43,11 +55,11 @@
             </div>
 
             <!--mode-->
-            <div class="card flex justify-center">
+            <!-- <div class="card flex justify-center">
                 <p-togglebutton [(ngModel)]="checked" onLabel="" offLabel=""
                  onIcon="pi pi-sun" offIcon="pi pi-moon"
                  class="w-24" ariaLabel="Do you confirm" />
-            </div>
+            </div> -->
         </div>
  
     </ng-template>

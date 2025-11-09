@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 interface UploadEvent {
     originalEvent: Event;
@@ -24,19 +25,18 @@ export class RegisterComponent {
   fb=inject(FormBuilder)
   location=inject(Location)
   authService=inject(AuthService)
+  router=inject(Router)
   constructor()
   {
     //form intialization
     this.registerForm=this.fb.group({
       firstName:['',[Validators.required,Validators.minLength(3),Validators.maxLength(10),Validators.pattern('^[A-Za-z\\u0621-\\u064A\\s]+$')]],
       lastName:['',[Validators.required,Validators.minLength(3),Validators.maxLength(10),Validators.pattern('^[A-Za-z\\u0621-\\u064A\\s]+$')]],
-      customername:['',[Validators.required,Validators.minLength(3),Validators.maxLength(10),
+      username:['',[Validators.required,Validators.minLength(3),Validators.maxLength(150),
       Validators.pattern('^(?=.{3,10}$)(?=.*[0-9!@#$%^&*()_+=\\-{}\\[\\]:;"\'<>,.?/~`])(?!.*\\s)[A-Za-z\\u0621-\\u064A][A-Za-z\\u0621-\\u064A0-9!@#$%^&*()_+=\\-{}\\[\\]:;"\'<>,.?/~`]*$')
       ]],
       Email:['',[Validators.required,Validators.email]],
       password:['',[Validators.minLength(8),Validators.required,Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$%^&*()_+=\\-{}\\[\\]:;"\'<>,.?/~`])(?!.*\\s).+$')]],
-      phone:['',[Validators.required,Validators.maxLength(11),Validators.pattern('^(010|012|015)[0-9]{8}$')]],
-      image:['']
     })
   }
 
@@ -61,7 +61,13 @@ export class RegisterComponent {
     if(this.registerForm.valid)
     {
       this.authService.register(this.registerForm.value).subscribe({
-        next:(res=>{console.log(res)}),
+        next:(res=>{
+          // this.messageService$.add({
+          //   severity: 'success',
+          //   summary: 'Success',
+          //   detail: 'user registered successfully'});
+          this.router.navigate(['/auth/login']);
+        }),
         error:(err=>console.log(err))
       })
     }

@@ -23,20 +23,27 @@ export class ProfileComponent {
   {
     //form intialization
     this.customerUpdateForm=this.fb.group({
-      firstName:[''],
-      lastName:[''],
+      // firstName:[''],
+      // lastName:[''],
       username:[''],
-      email:[''],
-      password:[''],
-      phone:[''],
-      profileImage:['']
+      // email:[''],
+      // password:[''],
+      // phone:[''],
+      // profileImage:['']
+    })
+  }
+
+  ngOnInit()
+  {
+    this.customerUpdateForm.patchValue({
+      username:'test'
     })
   }
 
 
-  onBasicUploadAuto(event: any) {
-      this.messageService$.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded with Auto Mode' });
-  }
+  // onBasicUploadAuto(event: any) {
+  //     this.messageService$.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded with Auto Mode' });
+  // }
 
   save(){}
 }
